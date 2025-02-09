@@ -23,6 +23,7 @@ wheels/
 # Virtual Environment
 venv/
 ENV/
+.venv
 
 # IDE
 .idea/
@@ -31,7 +32,7 @@ ENV/
 *.swo
 
 # Project specific
-output*.wav
+output/*.*
 *.pth
 *.onnx
 voices/
