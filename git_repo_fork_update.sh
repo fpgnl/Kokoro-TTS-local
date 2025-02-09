@@ -1,20 +1,15 @@
 #!/bin/zsh
 
-# Change to script's directory to ensure we're in the git repo
-cd $(realpath "$0")
+# Add upstream if it doesn't exist
+if ! git remote | grep -q "upstream"; then
+    git remote add upstream https://github.com/PierrunoYT/Kokoro-TTS-Local.git
+fi
 
 # Sync with upstream repository
 git fetch upstream
 
-# Update local main branch with upstream changes
-git merge upstream/main
-
-# Handle merge conflicts - requires manual intervention
-if [ $? -ne 0 ]; then
-    echo "Merge conflicts encountered. Please resolve them before committing."
-    exit 1
-fi
+# Update local master branch with upstream changes
+git merge upstream/master
 
 # Push local changes to origin
-git commit -m "Merge latest changes from upstream"
-git push origin main
+git push origin master
